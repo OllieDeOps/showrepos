@@ -17,10 +17,6 @@ defmodule ShowreposWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/user_repos", PageController, :getRepos
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", ShowreposWeb do
-  #   pipe_through :api
-  # end
 end
