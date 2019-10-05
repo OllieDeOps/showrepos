@@ -1,11 +1,26 @@
 <section class="phx-hero">
-  <p>Enter a Github username<br>to view that user's watched and owned repositories</p>
+  <p>Enter a Github username<br>to view that user's URL and watched repositories</p>
 </section>
 
 <section class="row">
-  <%= form_for @conn, Routes.page_path(@conn, :getRepos), [class: "column"], fn f -> %>
+  <%= form_for @conn, Routes.page_path(@conn, :get_repos), [class: "column"], fn f -> %>
     Username:
     <%= text_input f, :username %>
     <%= submit "Submit" %>
   <% end %>
 </section>
+
+
+<%= if assigns[:user_url] && assigns[:user_watching] do %>
+  <div class="phx-hero">
+      <p>User URL: </p>
+      <%= @user_url %><br><br>
+      <%= for item <- @user_watching do %>
+        <%= for {_key, value} <- item do %>
+          <%= for {_k, v} <- value do %>
+            <%= v %><br>
+          <% end %><br>
+        <% end %>
+      <% end %>
+  </div>
+<% end %>

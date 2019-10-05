@@ -17,6 +17,6 @@ defmodule ShowreposWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    post "/user_repos", PageController, :getRepos
+    post "/", PageController, :get_repos
   end
 end
