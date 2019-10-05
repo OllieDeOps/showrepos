@@ -3,10 +3,9 @@
 </section>
 
 <section class="row">
-  <form action="/user_repos" method="POST">
+  <%= form_for @conn, Routes.page_path(@conn, :getRepos), [class: "column"], fn f -> %>
     Username:
-    <input type="hidden" value="<%= @token %>" name="_csrf_token"/>
-    <input type="text" name="username"/>
-    <input type="submit" value="Send" />
-  </form>
+    <%= text_input f, :username %>
+    <%= submit "Submit" %>
+  <% end %>
 </section>
