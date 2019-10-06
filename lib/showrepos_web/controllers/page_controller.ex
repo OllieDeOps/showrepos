@@ -7,7 +7,7 @@ defmodule ShowreposWeb.PageController do
 
   def get_repos(conn, %{"username" => username}) do
     body = Jason.encode!(%{
-      "query": "query($login: String!) {
+      query: "query($login: String!) {
         user(login: $login) {
           url
           watching(first: 100) {
@@ -20,7 +20,7 @@ defmodule ShowreposWeb.PageController do
           }
         }
       }",
-      "variables": "{
+      variables: "{
         \"login\": \"#{username}\"
       }"
     })
@@ -32,8 +32,6 @@ defmodule ShowreposWeb.PageController do
     userURL = responseMap["data"]["user"]["url"]
     userWatching = responseMap["data"]["user"]["watching"]["edges"]
     
-
-    IO.inspect userURL
     IO.inspect userWatching
 
     render(conn, "index.html", user_url: userURL, user_watching: userWatching)

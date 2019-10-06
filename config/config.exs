@@ -12,7 +12,8 @@ config :showrepos, ShowreposWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "I6W1LnHKB6nZzhO+SknGJFChzCxgEcHfLM76iJQKkYdFPxv1eVftxSYo91gEC9oR",
   render_errors: [view: ShowreposWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Showrepos.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Showrepos.PubSub, adapter: Phoenix.PubSub.PG2],
+  github_access_token: System.get_env("GITHUB_ACCESS_TOKEN")
 
 # Configures Elixir's Logger
 config :logger, :console,
