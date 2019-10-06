@@ -32,7 +32,7 @@ defmodule ShowreposWeb.PageController do
     userURL = responseMap["data"]["user"]["url"]
     userWatching = responseMap["data"]["user"]["watching"]["edges"]
     
-    IO.inspect userWatching
+    IO.inspect response
 
     render(conn, "index.html", user_url: userURL, user_watching: userWatching)
   end
